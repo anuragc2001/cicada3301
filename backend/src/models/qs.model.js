@@ -1,19 +1,15 @@
 const mongoose = require('mongoose')
 
-const scoreSchema = new mongoose.Schema({
-    rank: {
+const qnaSchema = new mongoose.Schema({
+    question: {
         type: String,
         required: true
     },
-    username: {
+    answer: {
         type: String,
         required: true
     },
-    mail: {
-        type: String,
-        required: true
-    },
-    points: {
+    point: {
         type: String,
         required: true
     },
@@ -23,6 +19,6 @@ const scoreSchema = new mongoose.Schema({
     }
 })
 
-const Score = mongoose.model('Score', scoreSchema)
+const Qna = mongoose.model('Qna', qnaSchema)
 
-module.exports = Score
+module.exports = Qna
