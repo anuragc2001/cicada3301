@@ -13,6 +13,10 @@ const static_path = path.join(__dirname, "../static");
 const app = express();
 const port = process.env.PORT || 80;
 
+const Admin = require('./routes/admin/admin.routes');
+const Auth = require('./routes/auth/auth.routes');
+const Game = require('./routes/game/game.routes');
+
 
 const store = new mongodbStore({
     uri: process.env.MONGO_URI,
@@ -32,11 +36,13 @@ app.use(bodyParser.json())
 app.set("view engine", "pug");
 app.set("views", views_path);
 
-app.get("/", (req, res) => {
-    res.status(200).send("<h1>Welcome to Cicada</h1>");
+app.use(Admin)
+app.use(Auth)
+app.use(Game)
+
+app.get("/server_stat", (req, res) => {
+    res.status(200).send(`<p>running on port ${port}</p>`);
 });
-
-
 
 
 //* listen

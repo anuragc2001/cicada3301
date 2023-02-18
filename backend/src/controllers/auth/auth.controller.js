@@ -4,9 +4,9 @@ const Admin = require('../../models/admin.model')
 
 const getLoginPage = (req, res) => {
     if(req.session.isLoggedIn === true){
-        res.redirect('/')
+        res.redirect('/admin')
     }else{
-        res.send('logged in')
+        res.render('auth/login')
     }
 }
 
@@ -19,7 +19,7 @@ const postLogin = (req, res) => {
         .then((user) => {
 
             if (!user) {
-                return res.redirect('/')
+                return res.redirect('/login')
             }
             if (user.password === password) {
                 req.session.isLoggedIn = true
@@ -28,10 +28,10 @@ const postLogin = (req, res) => {
                     if (err) {
                         return console.log(err);
                     }
-                    res.redirect('/')
+                    res.redirect('/admin')
                 })
             } else {
-                res.send("Incorrect password")
+                res.redirect("/login")
             }
         })
 }
@@ -41,7 +41,7 @@ const postLogout = (req, res) => {
         if (err) {
             return console.log(err);
         }
-        res.redirect('/')
+        res.redirect('/login')
     })
 }
 
