@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.set("views", views_path);
 
 app.use(Admin)
@@ -48,7 +48,7 @@ app.get("/server_stat", (req, res) => {
     res.status(200).send(`<p>running on port ${port}</p>`);
 });
 
-cronJob();
+// cronJob();
 //* listen
 app.listen(port, () => {
     console.log(`The application started successfully on port ${port}`);
