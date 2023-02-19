@@ -1,7 +1,7 @@
-const Score = require('../../models/score.model')
+const Score = require('../../models/player.model')
 
 const getScore = (req, res) => {
-    Score.find()
+    Score.find().sort()
         .then((data) => {
             res.send(data);
         })
