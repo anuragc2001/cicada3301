@@ -19,7 +19,7 @@ const getQuestion = (req, res) => {
 const getAnswer = (req, res) => {
     Qna.findOne({level: req.body.level})
         .then((data) => {
-            if(data.answer === req.body.answer){
+            if(data.answer.toLocaleLowerCase() === req.body.answer.toLocaleLowerCase()){
                 res.send({"status": "correct"})
             }else{
                 res.send({"status": "incorrect"})
