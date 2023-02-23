@@ -6,6 +6,8 @@ const cookieParse = require("cookie-parser");
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const mongodbStore = require('connect-mongodb-session')(session)
+const cors = require('cors')
+
 
 require("dotenv").config();
 require("../src/db/conn");
@@ -26,6 +28,10 @@ const store = new mongodbStore({
     uri: process.env.MONGO_URI,
     collection: 'sessions'
 })
+
+app.use(cors({
+    origin: '*'
+}));
 
 app.use(session({ secret: process.env.SECRET_KEY, resave: false, saveUninitialized: false, store: store, cookie: {maxAge: 12 * 60 * 60 * 1000}}))
 
