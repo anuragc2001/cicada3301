@@ -4,7 +4,14 @@ const auth = require('../../middleware/auth');
 const route = new express.Router()
 
 const {getScore} = require('../../controllers/game/player.controller')
+const {getQuestion} = require('../../controllers/game/player.controller')
+const {getAnswer} = require('../../controllers/game/player.controller')
+
 
 route.get('/score', getScore);
+
+route.post('/fetch_question', getQuestion)
+route.post('/check_answer', getAnswer)
+
 
 module.exports = route
