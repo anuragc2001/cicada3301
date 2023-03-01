@@ -1,0 +1,16 @@
+const mongoose = require('mongoose')
+
+const playerSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    mail: {
+        type: String,
+        required: true
+    }
+})
+
+const Player = mongoose.model('Player', playerSchema)
+
+module.exports = Player
