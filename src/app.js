@@ -50,8 +50,8 @@ app.use(Admin)
 app.use(Auth)
 app.use(Game)
 
-app.get("/server_stat", (req, res) => {
-    res.status(200).send(`<p>running on port ${port}</p>`);
+app.get("/", (req, res) => {
+    res.status(200).json({"server health": "ok"});
 });
 
 // cronJob();
