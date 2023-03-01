@@ -28,7 +28,7 @@ const registerPlayer = (req, res) => {
 const checkAvialability = (req, res) => {
     Player.findOne({mail: req.body.mail})
         .then((data) => {
-            if(data){
+            if(!data){
                 res.send({status: "0"})
             }else{
                 res.send({status: "1"})
