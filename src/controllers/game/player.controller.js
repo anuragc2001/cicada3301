@@ -39,5 +39,7 @@ const checkAvialability = (req, res) => {
 
 module.exports = {
     getScore,
-    updateScore
+    updateScore,
+    registerPlayer,
+    checkAvialability
 }
