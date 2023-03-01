@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const scoreSchema = new mongoose.Schema({
-    rank: {
-        type: String,
-        required: true
-    },
     username: {
         type: String,
         required: true
@@ -15,10 +11,12 @@ const scoreSchema = new mongoose.Schema({
     },
     points: {
         type: String,
+        default: '0',
         required: true
     },
     level: {
         type: String,
+        default: '0',
         required: true
     }
 })
