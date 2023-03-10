@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const scoreSchema = new mongoose.Schema({
-    username: {
+    teamName: {
+        type: String,
+        required: true
+    },
+    leaderName: {
         type: String,
         required: true
     },
@@ -9,14 +13,33 @@ const scoreSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    points: {
+    phone: {
         type: String,
-        default: '0',
+        required: true
+    },
+    collegeName: {
+        type: String,
+        required: true
+    },
+    teamMembers: [
+        
+        {
+            mem1: {
+                type: String,
+            },
+            mem2: {
+                type: String,
+            }
+        },
+    ],
+    points: {
+        type: Number,
+        default: 0,
         required: true
     },
     level: {
-        type: String,
-        default: '0',
+        type: Number,
+        default: 0,
         required: true
     }
 })

@@ -20,4 +20,5 @@ route.post('/register_player', registerPlayer)
 
 route.post('/check_availability', checkAvialability)
 
+
 module.exports = route

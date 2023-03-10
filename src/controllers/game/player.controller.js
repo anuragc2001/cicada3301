@@ -1,5 +1,5 @@
 const Score = require('../../models/player.model');
-const Player = require('../../models/register.dev.model');
+const Player = require('../../models/tessarus.model.copy');
 
 const getScore = (req, res) => {
     Score.find({}).sort({level: 1})
@@ -9,16 +9,28 @@ const getScore = (req, res) => {
 }
 
 const updateScore = (req, res) => {
-    const {username, mail, points, level} = req.body;
-    Score.findOneAndUpdate({username: username}, {mail: mail, points: points, level: level})
+    const {username, points, level} = req.body;
+    Score.findOneAndUpdate({teamName: username}, {points: points, level: level})
         .then((data) => {
-            res.send(data);
+            res.send('updated');
         })
 }
 
 const registerPlayer = (req, res) => {
-    const {username, mail} = req.body;
-    const player = new Score({username: username, mail: mail});
+    const {username, mail, phone, collegeName, leaderName} = req.body;
+    const player = new Score(
+        {
+            teamName: username, 
+            leaderName: leaderName,
+            mail: mail, 
+            phone: phone, 
+            collegeName: collegeName,
+            teamMembers: [
+                {
+                    mem1: req.body.mem1,
+                    mem2: req.body.mem2       
+                }]
+        });
     player.save()
         .then(() => {
         res.send({status: "success"}

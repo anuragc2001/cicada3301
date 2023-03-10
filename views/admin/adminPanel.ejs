@@ -559,7 +559,7 @@
                       <th class="px-4 py-3">Rank</th>
                       <th class="px-4 py-3">Team Name</th>
                       <th class="px-4 py-3">Points</th>
-                      <th class="px-4 py-3">Answers</th>
+                      <!-- <th class="px-4 py-3">Answers</th> -->
                       <th class="px-4 py-3">Level</th>
                       <th class="px-4 py-3">Email</th>
                     </tr>
@@ -577,13 +577,14 @@
                               <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                             </div>
                             <div>
-                              <p class="font-semibold"><%=player.username%></p>
-                              <p class="text-xs text-gray-600 dark:text-gray-400"><%=player.username%></p>
+                              <p class="font-semibold"><%=player.teamName%></p>
+                              <p class="text-xs text-gray-600 dark:text-gray-400">Leader - <%=player.leaderName%></p>
+                              <p class="text-xs text-gray-600 dark:text-gray-400">Members - <%=player.teamMembers[0].mem1%>, <%=player.teamMembers[0].mem2%></p>
                             </div>
                           </div>
                         </td>
                         <td class="px-4 py-3 text-sm"><%=player.points%></td>
-                        <td class="px-4 py-3 text-sm"><%=player.points%></td>
+                        <!-- <td class="px-4 py-3 text-sm"><%=player.points%></td> -->
                         <td class="px-4 py-3 text-xs">
                           <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"><%=player.level%></span>
                         </td>

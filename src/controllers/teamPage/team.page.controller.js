@@ -1,4 +1,4 @@
-const Player = require("../../models/register.dev.model")
+const Player = require("../../models/tessarus.model.copy")
 
 const getTeam = (req, res) => {
     const adminName = req.User.adminName
