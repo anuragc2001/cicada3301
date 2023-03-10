@@ -12,6 +12,10 @@ const adminSchema = new mongoose.Schema({
     adminName: {
         type: String,
         required: true
+    },
+    gameOn: {
+        type: Boolean,
+        default: false
     }
 })
 

@@ -37,13 +37,20 @@ const registerPlayer = (req, res) => {
     )});
 }
 
-const checkAvialability = (req, res) => {
+const checkPlayer = (req, res) => {
     Player.findOne({mail: req.body.mail})
         .then((data) => {
             if(!data){
                 res.send({status: "0"})
             }else{
-                res.send({status: "1"})
+                Score.findOne({mail: req.body.mail})
+                    .then((data) => {
+                        if(!data){
+                            res.send({status: "1"})
+                        }else{
+                            res.send({status: "2"})
+                        }
+                    })
             }
         })
 }
@@ -53,5 +60,5 @@ module.exports = {
     getScore,
     updateScore,
     registerPlayer,
-    checkAvialability
+    checkPlayer
 }

@@ -1,4 +1,5 @@
 const Score = require('../../models/player.model')
+const Admin = require('../../models/admin.model')
 
 const getAdmin = (req, res) => {
     const adminName = req.User.adminName
@@ -7,6 +8,55 @@ const getAdmin = (req, res) => {
     })
 }
 
+const startGame = (req, res) => {
+    const Anurag = "Anurag";
+
+    Admin.findOne({adminName: Anurag})
+        .then((data) => {
+            if(data.gameOn){
+                res.send({status: "1"})
+            }else{
+                Admin.findOneAndUpdate({adminName: Anurag}, {gameOn: true})
+                    .then(() => {
+                        res.send({status: "1"})
+                    })
+            }
+        })
+}
+
+const stopGame = (req, res) => {
+    const Anurag = "Anurag";
+
+    Admin.findOne({adminName: Anurag})
+        .then((data) => {
+            if(data.gameOn){
+                Admin.findOneAndUpdate({adminName: Anurag}, {gameOn: false})
+                    .then(() => {
+                        res.send({status: "0"})
+                    })
+            }else{
+                res.send({status: "0"})
+            }
+        })
+}
+
+const getGameStatus = (req, res) => {
+    const Anurag = "Anurag";
+
+    Admin.findOne({adminName: Anurag})
+        .then((data) => {
+            if(data.gameOn){
+                res.send({status: "1"})
+            }else{
+                res.send({status: "0"})
+            }
+        })
+}
+
+
 module.exports = {
     getAdmin,
+    startGame,
+    stopGame,
+    getGameStatus
 }
