@@ -17,18 +17,18 @@ const updateScore = (req, res) => {
 }
 
 const registerPlayer = (req, res) => {
-    const {username, mail, phone, collegeName, leaderName, mem1, mem2} = req.body;
+    const {teamName, mail, phone, collegeName, leaderName, mem1, mem2} = req.body;
     const player = new Score(
         {
-            teamName: username, 
+            teamName: teamName, 
             leaderName: leaderName,
             mail: mail, 
             phone: phone, 
             collegeName: collegeName,
             teamMembers: [
                 {
-                    mem1: req.body.mem1,
-                    mem2: req.body.mem2       
+                    mem1: mem1,
+                    mem2: mem2       
                 }]
         });
     player.save()
