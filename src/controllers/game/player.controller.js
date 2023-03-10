@@ -17,7 +17,7 @@ const updateScore = (req, res) => {
 }
 
 const registerPlayer = (req, res) => {
-    const {username, mail, phone, collegeName, leaderName} = req.body;
+    const {username, mail, phone, collegeName, leaderName, mem1, mem2} = req.body;
     const player = new Score(
         {
             teamName: username, 
