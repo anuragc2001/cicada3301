@@ -1,10 +1,18 @@
 const Score = require('../../models/player.model')
 const Admin = require('../../models/admin.model')
+const axios = require('axios')
 
 const getAdmin = (req, res) => {
     const adminName = req.User.adminName
     Score.find({}).sort({level: -1, points: -1}).then((data) => {
-        res.render('admin/adminPanel', {adminName, playerData : data })
+        axios.get('/gameStatus')
+            .then((response) => {
+                if(response.data.status === "1"){
+                    res.render('admin/adminPanel', {adminName, playerData : data, gameOn: "On" })
+                }else{
+                    res.render('admin/adminPanel', {adminName, playerData : data, gameOn: "Off" })
+                }
+            })
     })
 }
 

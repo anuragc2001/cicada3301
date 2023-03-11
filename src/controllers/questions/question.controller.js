@@ -1,10 +1,18 @@
 const Qna = require('../../models/qs.model')
+const axios = require('axios')
 
 const getQna = (req, res) => {
     const adminName = req.User.adminName
     Qna.find({}).sort({level: 1})
         .then((data) => {
-            res.render('admin/questionAnswer', {adminName, playerData : data })
+            axios.get('/gameStatus')
+                .then((response) => {
+                    if(response.data.status === "1"){
+                        res.render('admin/questionAnswer', {adminName, playerData : data, gameOn: "On" })
+                    }else{
+                        res.render('admin/questionAnswer', {adminName, playerData : data, gameOn: "Off" })
+                    }
+                })
         })
 }
 

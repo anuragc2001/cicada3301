@@ -1,9 +1,17 @@
 const Player = require("../../models/tessarus.model.copy")
+const axios = require('axios')
 
 const getTeam = (req, res) => {
     const adminName = req.User.adminName
     Player.find({}).sort({level: 1}).then((data) => {
-        res.render('admin/teamPage', {adminName, playerData : data })
+        axios.get('/gameStatus')
+            .then((response) => {
+                if(response.data.status === "1"){
+                    res.render('admin/teamPage', {adminName, playerData : data, gameOn: "On" })
+                }else{
+                    res.render('admin/teamPage', {adminName, playerData : data, gameOn: "Off" })
+                }
+            })
     })
 }
 
