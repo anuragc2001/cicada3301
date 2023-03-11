@@ -5,7 +5,7 @@ const getQna = (req, res) => {
     const adminName = req.User.adminName
     Qna.find({}).sort({level: 1})
         .then((data) => {
-            axios.get('/gameStatus')
+            axios.get('https://cicada3301.onrender.com/gameStatus')
                 .then((response) => {
                     if(response.data.status === "1"){
                         res.render('admin/questionAnswer', {adminName, playerData : data, gameOn: "On" })
