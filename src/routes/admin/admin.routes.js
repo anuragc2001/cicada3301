@@ -13,8 +13,8 @@ route.get('/admin', auth, getAdmin)
 route.get('/question', auth, getQna);
 route.get('/teamPage', auth, getTeam);
 
-route.post('/startGame', auth, startGame)
-route.post('/stopGame', auth, stopGame)
+route.get('/startGame', auth, startGame)
+route.get('/stopGame', auth, stopGame)
 
 route.get('/gameStatus', getGameStatus)
 

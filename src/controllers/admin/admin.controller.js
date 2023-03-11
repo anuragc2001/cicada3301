@@ -14,11 +14,11 @@ const startGame = (req, res) => {
     Admin.findOne({adminName: Anurag})
         .then((data) => {
             if(data.gameOn){
-                res.send({status: "1"})
+                res.redirect('/admin')
             }else{
                 Admin.findOneAndUpdate({adminName: Anurag}, {gameOn: true})
                     .then(() => {
-                        res.send({status: "1"})
+                        res.redirect('/admin')
                     })
             }
         })
@@ -32,10 +32,10 @@ const stopGame = (req, res) => {
             if(data.gameOn){
                 Admin.findOneAndUpdate({adminName: Anurag}, {gameOn: false})
                     .then(() => {
-                        res.send({status: "0"})
+                        res.redirect('/admin')
                     })
             }else{
-                res.send({status: "0"})
+                res.redirect('/admin')
             }
         })
 }
