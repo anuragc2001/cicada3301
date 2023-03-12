@@ -27,6 +27,19 @@ const cronJob = () => {
       if(response.data.status === "1"){
             dummyScoreboardSim();
             // console.log("updated");
+      }else{
+        teams.map((team) => {
+          axios.post(process.env.GAME_SCORE_UPDATE_URI, {
+            username: team,
+            points: 0,
+            level: 0,
+          })
+          .then((response) => {
+            console.log("reset");
+          }, (error) => {
+            console.log(error);
+          });
+        })
       }
     })
   }    
