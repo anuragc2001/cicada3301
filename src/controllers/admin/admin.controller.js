@@ -5,7 +5,7 @@ const axios = require('axios')
 const getAdmin = (req, res) => {
     const adminName = req.User.adminName
     Score.find({}).sort({level: -1, points: -1}).then((data) => {
-        axios.get('https://cicada3301.onrender.com/gameStatus')
+        axios.get(process.env.GAME_STATUS_URI)
             .then((response) => {
                 if(response.data.status === "1"){
                     res.render('admin/adminPanel', {adminName, playerData : data, gameOn: "On" })
