@@ -34,11 +34,6 @@ const cronJob = () => {
             points: 0,
             level: 0,
           })
-          .then((response) => {
-            console.log("reset");
-          }, (error) => {
-            console.log(error);
-          });
         })
       }
     })
