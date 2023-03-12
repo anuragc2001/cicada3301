@@ -3,8 +3,8 @@ const axios = require('axios')
 var cron = require('node-cron');
 
 
+const teams = ["pikachu", "aqua01", "mystik", "kaleido", "tessarus"]
 const dummyScoreboardSim = () => {
-  const teams = ["pikachu", "aqua01", "mystik", "kaleido", "tessarus"]
   const random = Math.floor(Math.random() * teams.length);
   
   axios.post(process.env.GAME_SCORE_UPDATE_URI, {
