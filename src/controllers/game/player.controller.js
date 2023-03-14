@@ -2,7 +2,7 @@ const Score = require('../../models/player.model');
 const Player = require('../../models/tessarus.model.copy');
 
 const getScore = (req, res) => {
-    Score.find({}).sort({level: 1})
+    Score.find({}).sort({level: -1, points: -1})
         .then((data) => {
             res.send(data);
         })
