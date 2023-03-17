@@ -5,7 +5,7 @@ const getQna = (req, res) => {
     const adminName = req.User.adminName
     Qna.find({}).sort({level: 1})
         .then((data) => {
-            axios.get('https://cicada3301.onrender.com/gameStatus')
+            axios.get(process.env.GAME_STATUS_URI)
                 .then((response) => {
                     if(response.data.status === "1"){
                         res.render('admin/questionAnswer', {adminName, playerData : data, gameOn: "On" })
@@ -20,6 +20,12 @@ const getQuestion = (req, res) => {
     Qna.findOne({level: req.body.level})
         .then((data) => {
             res.send({"question": data.question})
+        })
+}
+const getPoints = (req, res) => {
+    Qna.findOne({level: req.body.level})
+        .then((data) => {
+            res.send({"point": data.points})
         })
 }
 
@@ -38,5 +44,6 @@ const getAnswer = (req, res) => {
 module.exports = {
     getQna,
     getQuestion,
-    getAnswer
+    getAnswer,
+    getPoints
 }
