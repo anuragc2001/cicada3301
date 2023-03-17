@@ -46,7 +46,7 @@ const checkPlayer = (req, res) => {
                 Score.findOne({mail: req.body.mail})
                     .then((data) => {
                         if(!data){
-                            res.status(401).send({status: "not registered"})
+                            res.status(201).send({status: "not registered"})
                         }else{
                             res.status(200).send({status: "registered"})
                         }
