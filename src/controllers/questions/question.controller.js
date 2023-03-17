@@ -25,7 +25,7 @@ const getQuestion = (req, res) => {
 const getPoints = (req, res) => {
     Qna.findOne({level: req.body.level})
         .then((data) => {
-            res.send({"point": data.points})
+            res.send({"point": data.point})
         })
 }
 
