@@ -3,7 +3,7 @@ const axios = require('axios')
 var cron = require('node-cron');
 
 
-const teams = ["pikachu", "aqua01", "mystik", "kaleido", "tessarus"]
+const teams = ["pikachu", "aqua01", "mystik", "kaleido", "tessarus", "tessaruss1", "tessaruss2", "tessaruss3", "tessaruss4", "tessaruss5", "tessaruss56"]
 const dummyScoreboardSim = () => {
   const random = Math.floor(Math.random() * teams.length);
   
