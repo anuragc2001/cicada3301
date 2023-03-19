@@ -10,6 +10,7 @@ const {getAnswer} = require('../../controllers/questions/question.controller')
 const {updateScore} = require('../../controllers/game/player.controller')
 const {registerPlayer} = require('../../controllers/game/player.controller')
 const {checkPlayer} = require('../../controllers/game/player.controller')
+const {checkPlayerProd} = require('../../controllers/game/player.controller')
 
 route.get('/score', getScore);
 
@@ -21,6 +22,7 @@ route.post('/update_score', updateScore)
 route.post('/register_player', registerPlayer)
 
 route.post('/checkPlayer', checkPlayer)
+route.post('/checkPlayerProd', checkPlayerProd)
 
 
 module.exports = route

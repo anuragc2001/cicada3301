@@ -55,10 +55,29 @@ const checkPlayer = (req, res) => {
         })
 }
 
+const checkPlayerProd = (req, res) => {
+    Player.findOne({mail: req.body.mail})
+        .then((data) => {
+            if(!data){
+                res.status(404).send({status: "not found"})
+            }else{
+                Score.findOne({mail: req.body.mail})
+                    .then((data) => {
+                        if(!data){
+                            res.status(201).send({status: "not registered"})
+                        }else{
+                            res.status(200).send({status: "registered"})
+                        }
+                    })
+            }
+        })
+}
+
 
 module.exports = {
     getScore,
     updateScore,
     registerPlayer,
-    checkPlayer
+    checkPlayer,
+    checkPlayerProd
 }
