@@ -1,6 +1,8 @@
 const Score = require('../../models/player.model');
 const Player = require('../../models/tessarus.model.copy');
 
+const axios = require('axios');
+
 const getScore = (req, res) => {
     Score.find({}).sort({level: -1, points: -1}).limit(10)
         .then((data) => {
@@ -55,22 +57,28 @@ const checkPlayer = (req, res) => {
         })
 }
 
-const checkPlayerProd = (req, res) => {
-    Player.findOne({mail: req.body.mail})
-        .then((data) => {
-            if(!data){
-                res.status(404).send({status: "not found"})
-            }else{
-                Score.findOne({mail: req.body.mail})
-                    .then((data) => {
-                        if(!data){
-                            res.status(201).send({status: "not registered"})
-                        }else{
-                            res.status(200).send({status: "registered"})
-                        }
-                    })
-            }
+const checkPlayerProd = async (req, res) => {
+    try{
+        const data = await axios.post(process.env.TESSARUS_URL,{
+            "eventId": process.env.EVENT_ID,
+            "espektroId": req.body.espektroID,
+            "password": req.body.password
         })
+        
+        const mail = await data.data.user.email;
+        // console.log(mail);
+       
+        Score.findOne({mail: mail})
+            .then((data) => {
+                if(!data){
+                    res.status(201).send({status: "not registered"})
+                }else{
+                    res.status(200).send({status: "registered"})
+                }
+            })
+    }catch{
+        res.status(404).send({status: "not found"})
+    }
 }
 
 
