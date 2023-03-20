@@ -41,6 +41,10 @@ const scoreSchema = new mongoose.Schema({
         type: Number,
         default: 0,
         required: true
+    },
+    espektroID: {
+        type: String,
+        required: true
     }
 })
 

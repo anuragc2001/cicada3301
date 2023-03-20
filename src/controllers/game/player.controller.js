@@ -74,7 +74,7 @@ const checkPlayerProd = async (req, res) => {
         const mail = await data.data.user.email;
         // console.log(mail);
        
-        Score.findOne({espektroID: espektroID, mail: mail})
+        Score.findOne({mail: mail})
             .then((data) => {
                 if(!data){
                     res.status(201).send({status: "not registered"})
