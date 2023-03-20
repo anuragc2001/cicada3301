@@ -17,8 +17,6 @@ const static_path = path.join(__dirname, "../static");
 const app = express();
 const port = process.env.PORT || 80;
 
-const {cronJob} = require('./services/cron.service')
-
 const Admin = require('./routes/admin/admin.routes');
 const Auth = require('./routes/auth/auth.routes');
 const Game = require('./routes/game/game.routes');
@@ -54,7 +52,6 @@ app.get("/", (req, res) => {
     res.status(200).json({"server health": "ok"});
 });
 
-// cronJob();
 //* listen
 app.listen(port, () => {
     console.log(`The application started successfully on port ${port}`);

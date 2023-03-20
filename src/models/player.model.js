@@ -48,6 +48,6 @@ const scoreSchema = new mongoose.Schema({
     }
 })
 
-const Score = mongoose.model('Score', scoreSchema)
+const Score = mongoose.model('Prod-player', scoreSchema)
 
 module.exports = Score
