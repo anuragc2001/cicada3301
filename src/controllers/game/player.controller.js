@@ -24,7 +24,7 @@ const updateScore = (req, res) => {
 }
 
 const registerPlayer = (req, res) => {
-    const {teamName, mail, phone, collegeName, leaderName, mem1, mem2} = req.body;
+    const {teamName, mail, espektroID, phone, collegeName, leaderName, mem1, mem2} = req.body;
     const player = new Score(
         {
             teamName: teamName, 
@@ -32,6 +32,7 @@ const registerPlayer = (req, res) => {
             mail: mail, 
             phone: phone, 
             collegeName: collegeName,
+            espektroID: espektroID,
             teamMembers: [
                 {
                     mem1: mem1,
@@ -73,7 +74,7 @@ const checkPlayerProd = async (req, res) => {
         const mail = await data.data.user.email;
         // console.log(mail);
        
-        Score.findOne({mail: mail})
+        Score.findOne({espektroID: espektroID, mail: mail})
             .then((data) => {
                 if(!data){
                     res.status(201).send({status: "not registered"})
