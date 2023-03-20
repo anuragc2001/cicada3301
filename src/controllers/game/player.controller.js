@@ -12,9 +12,14 @@ const getScore = (req, res) => {
 
 const updateScore = (req, res) => {
     const {username, points, level} = req.body;
-    Score.findOneAndUpdate({teamName: username}, {points: points, level: level})
+    Score.findOneAndUpdate({mail: username}, {points: points, level: level})
         .then((data) => {
-            res.send('updated');
+            if(!data){
+                res.status(404).send({status: "not found"})
+            }else{
+                res.status(200).send({status: "updated"})
+            }
+            
         })
 }
 
