@@ -81,11 +81,22 @@ const checkPlayerProd = async (req, res) => {
     }
 }
 
+const getUserScore = (req, res) => {
+    const mail = req.body.mail;
+
+    Score.findOne({mail: mail})
+        .then((data) => {
+            res.send(data.points);
+        })
+}
+
+
 
 module.exports = {
     getScore,
     updateScore,
     registerPlayer,
     checkPlayer,
-    checkPlayerProd
+    checkPlayerProd,
+    getUserScore
 }
