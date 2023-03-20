@@ -86,7 +86,7 @@ const getUserScore = (req, res) => {
 
     Score.findOne({mail: mail})
         .then((data) => {
-            res.send(data.points);
+            res.send({points: data.points, level: data.level});
         })
 }
 
