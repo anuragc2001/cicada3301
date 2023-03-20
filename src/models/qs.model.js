@@ -19,6 +19,6 @@ const qnaSchema = new mongoose.Schema({
     }
 })
 
-const Qna = mongoose.model('Qna', qnaSchema)
+const Qna = mongoose.model('Prod-qna', qnaSchema)
 
 module.exports = Qna
