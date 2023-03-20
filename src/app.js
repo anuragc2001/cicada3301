@@ -54,7 +54,7 @@ app.get("/", (req, res) => {
     res.status(200).json({"server health": "ok"});
 });
 
-cronJob();
+// cronJob();
 //* listen
 app.listen(port, () => {
     console.log(`The application started successfully on port ${port}`);
