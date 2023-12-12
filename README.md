@@ -28,6 +28,10 @@ Welcome to Cicada3301, an intriguing and challenging puzzle game inspired by the
 
 Welcome to the Cicada3301 Game Backend repository! This backend serves as the backbone for the Cicada3301 puzzle game, offering APIs for various functionalities.
 
+## Admin Panel
+![Admin Panel](https://github.com/anuragc2001/cicada3301/blob/main/images/admin_panel.png)
+
+
 ## Technologies Used
 
 - **Node.js:** Backend runtime environment.
